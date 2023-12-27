@@ -114,7 +114,7 @@
 </head>
 <body>
 <div class="signup-form">
-    <form action="#" method="get" >
+    <form action="send_mail.php" method="POST" >
 		<div class="container-fluid">
 			<div>
 				
@@ -126,11 +126,11 @@
 				<div class="row">
 					<div class="col-md-6">
 						<label for="first_name">First Name</label>
-						<input type="text" class="form-control" id="first_name" placeholder="First Name" >
+						<input type="text" class="form-control" id="first_name" placeholder="First Name" name="first_name" required>
 					</div>
 					<div class="col-md-6">
 						<label for="last_name">Last Name</label>
-						<input type="text" class="form-control" id="last_name" placeholder="Last Name" >
+						<input type="text" class="form-control" id="last_name" placeholder="Last Name" name="last_name" required>
 					</div>
 				</div>
 			</div>
@@ -158,7 +158,7 @@
 					<div class="col-md-6">
 						<label for="email">Email Id</label>
 						<input type="email" required class="form-control" id="email" placeholder="Email" 
-							pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$/" />
+							pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$/" name="email" required/>
 					</div>
 					<div class="col-md-6">
 						<label for="phone">Phone Number</label>
@@ -285,12 +285,11 @@
 			</div>			
 			<div class="form-group">
 				<!-- <button type="submit" class="btn btn-success btn-lg btn-block">Register Now</button> -->
-				<input id="btnSave" type="button" class="w-50 btn btn-warning btn-lg align-center" onclick="RegisterCase();" value="SUBMIT" />
+				<input id="btnSave" type="submit" class="w-50 btn btn-warning btn-lg align-center" onclick="RegisterCase();" value="SUBMIT" name="submit-btn" />
 				
                 <input id="Button1" type="button" class="btn btn-warning btn-lg align-center" value="CANCEL" />
 			</div>
 		</form>
-		<!-- <div class="text-center">Already have an account? <a href="#">Sign in</a></div> -->
 	</div>
 	
 </body>

@@ -1,0 +1,20 @@
+{
+    "name": "usuario/form-pdf-php",
+    "type": "project",
+    "require": {
+        "mpdf/mpdf": "^8.2",
+        "phpmailer/phpmailer": "^6.9"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Usuario\\FormPdfPhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "matildegarelik",
+            "email": "garelikmatilde@gmail.com"
+        }
+    ]
+}
