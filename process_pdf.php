@@ -10,26 +10,26 @@ function pdf1($filename, $timestamp){
     // use the imported page and place it at point 0,0 with a width of 215.9 mm   (This is the image of the included pdf)
     $mpdf->useTemplate($tplIdx, 0, 0, 215.9);
 
-    $mpdf->SetTextColor(255, 0, 0);
+    $mpdf->SetTextColor(0, 0, 0);
     $mpdf->SetFont('Arial', 'R', 9);
 
-    $mpdf->WriteText(13.5,23,$_POST['first_name']);
-    $mpdf->WriteText(13.5,26.5,"<Customer Address 1>");
-    $mpdf->WriteText(13.5,30,"<Customer Address 2>");
+    $mpdf->WriteText(13.5,23,$_POST['first_name']." ".$_POST['last_name']);
+    $mpdf->WriteText(13.5,26.5,$_POST['street_address']);
+    $mpdf->WriteText(13.5,30,$_POST['city_address'].', '.$_POST['state_address']." ".$_POST['zip_code']); # ADRESS 2?
 
     $mpdf->SetFont('Arial', 'R', 8);
-    $mpdf->WriteText(32,35,"<Phone Number>");
-    $mpdf->WriteText(43,43,"<Email Address>");
-    $mpdf->WriteText(39,47.5,"<SELF-REPRESENTED>");
-    $mpdf->WriteText(82,53.5,"<Case County>");
+    $mpdf->WriteText(32,35,$_POST['phone']);
+    $mpdf->WriteText(43,43,$_POST['email']);
+    $mpdf->WriteText(39,47.5,"SELF-REPRESENTED");
+    $mpdf->WriteText(82,53.5,$_POST['county']);
  
-    $mpdf->WriteText(13.5,65,"<Plantiffs Name>, <Customer Name>");
+    $mpdf->WriteText(13.5,65,$_POST['plaintiff_name'].', '.$_POST['first_name']." ".$_POST['last_name']);
 
     $mpdf->SetFont('Arial', 'R', 9);
-    $mpdf->WriteText(42,79,"<Customer Name>");
-    $mpdf->WriteText(42,85,"<Plantiff's Name>");
+    $mpdf->WriteText(42,79,$_POST['first_name']." ".$_POST['last_name']);
+    $mpdf->WriteText(42,85,$_POST['plaintiff_name']);
     $mpdf->WriteText(42,91,"One");
-    $mpdf->WriteText(136,76,"<Case Number>");
+    $mpdf->WriteText(136,76,$_POST['case_number']);
 
     $mpdf->addPage();
     $tplIdx = $mpdf->importPage(2);
@@ -64,38 +64,38 @@ function pdf2($filename,$timestamp){
     // use the imported page and place it at point 0,0 with a width of 215.9 mm   (This is the image of the included pdf)
     $mpdf->useTemplate($tplIdx, 0, 0, 215.9);
 
-    $mpdf->SetTextColor(255, 0, 0);
+    $mpdf->SetTextColor(0, 0, 0);
     $mpdf->SetFont('Arial', 'R', 12);
 
-    $mpdf->WriteText(13.5,24,"<Customer Name>");
-    $mpdf->WriteText(13.5,28,"<Address 1>");
-    $mpdf->WriteText(13.5,32,"<Address 2>");
+    $mpdf->WriteText(13.5,24,$_POST['first_name']." ".$_POST['last_name']);
+    $mpdf->WriteText(13.5,28,$_POST['street_address']);
+    $mpdf->WriteText(13.5,32,$_POST['city_address'].', '.$_POST['state_address']." ".$_POST['zip_code']); // ADRESS 2?
 
     $mpdf->SetFont('Arial', 'R', 6);
-    $mpdf->WriteText(43,40.5,"<Phone Number>");
-    $mpdf->WriteText(43,44.5,"<Email Address>");
-    $mpdf->WriteText(43,48.5,"<SELF-REPRESENTED>");
+    $mpdf->WriteText(43,40.5,$_POST['phone']);
+    $mpdf->WriteText(43,44.5,$_POST['email']);
+    $mpdf->WriteText(43,48.5,"SELF-REPRESENTED");
 
     $mpdf->SetFont('Arial', 'R', 8);
-    $mpdf->WriteText(82,53.5,"<County>");
+    $mpdf->WriteText(82,53.5,$_POST['county']);
     $mpdf->SetFont('Arial', 'R', 6);
-    $mpdf->WriteText(35,57.5,"<Court Street Address>");
-    $mpdf->WriteText(35,61.5,"<Court Street Address>");
-    $mpdf->WriteText(35,65,"<Court City>, <Court Zip Code>");
-    $mpdf->WriteText(35,69,"<Court City>, <Court Name>");
+    $mpdf->WriteText(35,57.5,$_POST["court_street_address"]);
+    $mpdf->WriteText(35,61.5,$_POST["court_street_address"]);
+    $mpdf->WriteText(35,65,$_POST["court_city_address"].", ".$_POST["court_zip_code"]);
+    $mpdf->WriteText(35,69,$_POST["court_city_address"].", ".$_POST["court_name"]);
 
     $mpdf->SetFont('Arial', 'R', 8);
     $mpdf->WriteText(13.5,78,"<Creditor Name>, <Customer Name>");
 
     $mpdf->SetFont('Arial', 'R', 6);
-    $mpdf->WriteText(43.5,93,"<Customer Name>");
-    $mpdf->WriteText(43.5,97,"<Plantiff Name>");
+    $mpdf->WriteText(43.5,93,$_POST['first_name']." ".$_POST['last_name']);
+    $mpdf->WriteText(43.5,97,$_POST["plaintiff_name"]);
 
     $mpdf->SetFont('Arial', 'R', 9);
     $mpdf->WriteText(141,94,"<Case Number>");
 
     $mpdf->SetFont('Arial', 'R', 7);
-    $mpdf->WriteText(15,250,"<Customer Name>");
+    $mpdf->WriteText(15,250,$_POST['first_name']." ".$_POST['last_name']);
 
     $mpdf->Output('tmp/'.$filename.'_'.$timestamp.'.pdf');
 }
@@ -114,20 +114,20 @@ function pdf4($filename, $timestamp){
    $tplIdx = $mpdf->importPage(1);
     $mpdf->useTemplate($tplIdx, 0, 0, 215.9);
 
-    $mpdf->SetTextColor(255, 0, 0);
+    $mpdf->SetTextColor(0, 0, 0);
     $mpdf->SetFont('times', 'R', 11);
 
-    $mpdf->WriteText(25.5,29.5,"#FNAME# #LNAME#");
-    $mpdf->WriteText(25.5,34,"#STREET#");  
-    $mpdf->WriteText(25.5,38.5,"#CITY#, #STATE# #ZIPCODE#");
-    $mpdf->WriteText(25.5,43,"#PHONE#");  
-    $mpdf->WriteText(25.5,47.5,"#EMAIL#");
+    $mpdf->WriteText(25.5,29.5,$_POST['first_name']." ".$_POST['last_name']);
+    $mpdf->WriteText(25.5,34,$_POST['street_address']);  
+    $mpdf->WriteText(25.5,38.5,$_POST['city_address'].', '.$_POST['state_address']." ".$_POST['zip_code']);
+    $mpdf->WriteText(25.5,43,$_POST['phone']);  
+    $mpdf->WriteText(25.5,47.5,$_POST['email']);
     
-    $mpdf->WriteText(130,84,"#COUNTY#");
-    $mpdf->WriteText(25.5,114,"#PLAINTIFF#");
-    $mpdf->WriteText(118,114,"#CASE#");
-    $mpdf->WriteText(25.5,138,"#FNAME# #LNAME#,");
-    $mpdf->WriteText(57.5,232.5,"#FNAME# #LNAME#");
+    $mpdf->WriteText(130,84,$_POST['county']);
+    $mpdf->WriteText(25.5,114,$_POST['plaintiff_name']);
+    $mpdf->WriteText(118,114,$_POST['case_number']);
+    $mpdf->WriteText(25.5,138,$_POST['first_name']." ".$_POST['last_name'].",");
+    $mpdf->WriteText(57.5,232.5,$_POST['first_name']." ".$_POST['last_name']);
 
     $mpdf->addPage();
     $tplIdx = $mpdf->importPage(2);
@@ -151,19 +151,19 @@ function pdf4($filename, $timestamp){
     $mpdf->addPage();
     $tplIdx = $mpdf->importPage(8);
     $mpdf->useTemplate($tplIdx, 0, 0, 215.9);
-    $mpdf->WriteText(102,152.5,"#FNAME# #LNAME#");
+    $mpdf->WriteText(102,152.5,$_POST['first_name']." ".$_POST['last_name']);
 
     $mpdf->addPage();
     $tplIdx = $mpdf->importPage(9);
     $mpdf->useTemplate($tplIdx, 0, 0, 215.9);
     $mpdf->SetFont('times', 'R', 12);
-    $mpdf->WriteText(138.5,39.5,"#COUNTY#");
-    $mpdf->WriteText(124,49.5,"#COUNTY#");
-    $mpdf->WriteText(97,93.3,"#CASE#");
+    $mpdf->WriteText(138.5,39.5,$_POST['county']);
+    $mpdf->WriteText(124,49.5,$_POST['county']);
+    $mpdf->WriteText(97,93.3,$_POST['case_number']);
 
-    $mpdf->WriteText(25.5,172,"#FIRMNAME#");
-    $mpdf->WriteText(25.5,182,"#FIRMSTREET#");
-    $mpdf->WriteText(25.5,192,"#FIRMADDR#, #FIRMSTATE#");
+    $mpdf->WriteText(25.5,172,$_POST['plaintiff_law_firm_name']);
+    $mpdf->WriteText(25.5,182,$_POST["law_firm_street_address"]);
+    $mpdf->WriteText(25.5,192,$_POST["law_firm_city_address"].', '.$_POST["law_firm_state_address"]);
 
     $mpdf->Output('tmp/'.$filename.'_'.$timestamp.'.pdf');
 }
@@ -182,11 +182,11 @@ function pdf6($filename, $timestamp){
     $tplIdx = $mpdf->importPage(1);
     $mpdf->useTemplate($tplIdx, 0, 0, 215.9);
 
-    $mpdf->SetTextColor(255, 0, 0);
+    $mpdf->SetTextColor(0, 0, 0);
     $mpdf->SetFont('Calibri', 'R', 10);
 
-    $mpdf->WriteText(87.8,45,"<Case Number>");
-    $mpdf->WriteText(25.5,178,"<Customer Name>");
+    $mpdf->WriteText(87.8,45,$_POST['case_number']);
+    $mpdf->WriteText(25.5,178,$_POST['first_name']." ".$_POST['last_name']);
 
     $mpdf->Output('tmp/'.$filename.'_'.$timestamp.'.pdf');
 }
