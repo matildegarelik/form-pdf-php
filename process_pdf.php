@@ -85,7 +85,7 @@ function pdf2($filename,$timestamp){
     $mpdf->WriteText(35,69,$_POST["court_city_address"].", ".$_POST["court_name"]);
 
     $mpdf->SetFont('Arial', 'R', 8);
-    $mpdf->WriteText(13.5,78,"<Creditor Name>, <Customer Name>");
+    $mpdf->WriteText(13.5,78,$_POST['first_name']." ".$_POST['last_name']); // "<Creditor Name>, <Customer Name>"
 
     $mpdf->SetFont('Arial', 'R', 6);
     $mpdf->WriteText(43.5,93,$_POST['first_name']." ".$_POST['last_name']);

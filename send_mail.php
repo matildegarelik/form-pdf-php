@@ -54,9 +54,9 @@ if(isset($_POST['submit-btn'])){
 
     //$mail->SMTPDebug = SMTP::DEBUG_SERVER;
     if(!$mail->Send()) {
-        echo "Error al enviar el mensaje: " . $mail->ErrorInfo;
+        echo "Error sending the message: " . $mail->ErrorInfo;
     } else {
-        echo "Mensaje enviado!!";
+        echo "Message Sent!!";
     }
 
 }else{
