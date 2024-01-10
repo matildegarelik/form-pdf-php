@@ -92,7 +92,7 @@ function pdf2($filename,$timestamp){
     $mpdf->WriteText(43.5,97,$_POST["plaintiff_name"]);
 
     $mpdf->SetFont('Arial', 'R', 9);
-    $mpdf->WriteText(141,94,"<Case Number>");
+    $mpdf->WriteText(141,94,$_POST['case_number']);
 
     $mpdf->SetFont('Arial', 'R', 7);
     $mpdf->WriteText(15,250,$_POST['first_name']." ".$_POST['last_name']);

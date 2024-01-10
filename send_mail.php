@@ -47,7 +47,7 @@ if(isset($_POST['submit-btn'])){
 
     $mail->AddAttachment('tmp/'.$pdf1_name.'_'.$timestamp.'.pdf');
     $mail->AddAttachment('tmp/'.$pdf2_name.'_'.$timestamp.'.pdf');
-    $mail->AddAttachment('tmp/'.$pdf3_name.'_'.$timestamp.'.pdf');
+    //$mail->AddAttachment('tmp/'.$pdf3_name.'_'.$timestamp.'.pdf');
     $mail->AddAttachment('tmp/'.$pdf4_name.'_'.$timestamp.'.pdf');
     $mail->AddAttachment('tmp/'.$pdf5_name.'_'.$timestamp.'.pdf');
     $mail->AddAttachment('tmp/'.$pdf6_name.'_'.$timestamp.'.pdf');

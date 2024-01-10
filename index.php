@@ -325,6 +325,8 @@
 					alert(response)
 					$("#form :input").val("");
 					$('#loading-mask').css("display","none")
+					$('#btnSave').val('SUBMIT')
+					$('#Button1').val('CANCEL')
 				},
 				error: function (error) {
 					console.log(error)
